@@ -149,6 +149,7 @@
       var toSend = {
         loid: data
       };
+      console.log(toSend);
       axios.get('https://lilosearch.herokuapp.com/getFormation', toSend)
       // axios.get('localhost:9000/getFormation', toSend)
         .then(function(response) {
