@@ -187,10 +187,11 @@
           console.log("T'es en error fdp ?");
 
           var error = document.getElementById("error");
-          error.html(e)
+          $('#error').html(e)
           error.hidden = false;
           tableData.hidden = false;
           console.log(e);
+          console.log(e.response);
         })
         .finally(function() {
           // always executed
