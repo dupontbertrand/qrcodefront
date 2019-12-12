@@ -147,7 +147,7 @@
       canvasElement.hidden = true;
       console.log('in requestFormationDetails', data);
       axios.get('https://lilosearch.herokuapp.com/getFormation/' + data)
-      // axios.get('localhost:9000/getFormation', toSend)
+        // axios.get('localhost:9000/getFormation', toSend)
         .then(function(response) {
           // handle success
           console.log(response);
@@ -167,25 +167,26 @@
           console.log(endDate);
           var endHour = response.data.sessionDetails[0].PartEndTime;
           console.log(endHour);
+          var location = response.data.sessionDetails[0].PartLocation;
+          location = location.substring(location.lastIndexOf('>') + 1);
+          location = location.trim();
           // var length = response.data.persons;
           var tr = '';
           var contentText = '';
           contentText += '<div class="row"><h4 class="mx-auto">' + sessionTitle + '</h4></div>';
-          contentText += '<div class="row"><p>Number of approved users : ' + usersApproved + '</p></div>';
+          contentText += '<div class="row"><p>Number of approved users : ' + nbreUsersApproved + '</p></div>';
           contentText += '<div class="row"><p>Start Date : ' + startDate + '</p></div>';
           contentText += '<div class="row"><p>Start Hour : ' + startHour + '</p></div>';
           contentText += '<div class="row"><p>End Date : ' + endDate + '</p></div>';
           contentText += '<div class="row"><p>End Hour : ' + endHour + '</p></div>';
-          contentText += '<div class="row"><p>Location : Los Angeles Office</p></div>';
+          contentText += '<div class="row"><p>Location : ' + location + '</p></div>';
 
-          // for (var i = 0; i < response.data.persons.length; i++) {
-          //   tr += '<tr>';
-          //   tr += '<td class="id"><input type="radio" id="customRadio' + i + '" name="customRadio" class="" value="' + i + '"></div></td>'
-          //   tr += '<td class="firstName">' + response.data.persons[i].firstName + '</td>';
-          //   tr += '<td class="lastName">' + response.data.persons[i].lastName + '</td>';
-          //   tr += '</tr>';
-          //   console.log(response.data.persons[i]);
-          // }
+          for (var i = 0; i < usersApproved.length; i++) {
+            tr += '<tr>';
+            tr += '<td class="id"><input type="radio" id="customRadio' + i + '" name="customRadio" class="" value="' + i + '"></div></td>'
+            tr += '<td class="fullName">' + usersApproved[i].UserFullName + '</td>';
+            tr += '</tr>';
+          }
           var content = document.getElementById("content");
           var tableData = document.getElementById("tableData");
           var submitBtn = document.getElementById("submitBtn");
