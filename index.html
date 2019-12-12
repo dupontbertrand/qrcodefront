@@ -179,15 +179,18 @@
           tableData.hidden = false;
           submitBtn.hidden = false;
           content.hidden = false;
-          console.log(content);
           $('#content').html(contentText);
           $('#tableData').html(tr);
         })
-        .catch(function(error) {
+        .catch(function(e) {
           // handle error
+          console.log("T'es en error fdp ?");
+
           var error = document.getElementById("error");
+          error.html(e)
+          error.hidden = false;
           tableData.hidden = false;
-          console.log(error);
+          console.log(e);
         })
         .finally(function() {
           // always executed
