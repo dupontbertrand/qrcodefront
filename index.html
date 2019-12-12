@@ -151,6 +151,12 @@
         .then(function(response) {
           // handle success
           console.log(response);
+          var sessionTitle = response.responseDetails.trainingItem.Title;
+          console.log(sessionTitle);
+          var sessionProvider = response.responseDetails.trainingItem.Provider;
+          console.log(sessionProvider);
+          var nbreUsersApproved = response.usersApproved.length();
+          console.log(nbreUsersApproved);
           var length = response.data.persons;
           var tr = '';
           var contentText = '';
