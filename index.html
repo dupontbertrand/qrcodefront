@@ -73,6 +73,8 @@
     <div id="error" hidden="">
       <h4>Something went wrong, please reload the page.</h4>
     </div>
+    <div id="content" hidden="">
+    </div>
     <table id="tableData" hidden="" class="table">
     </table>
     <button type="button" name="button" id="submitBtn" hidden="">Envoyer</button>
@@ -144,16 +146,22 @@
     function requestFormationDetails(data) {
       canvasElement.hidden = true;
       console.log('in requestFormationDetails', data);
-      var osef = {
-        test: data
+      var toSend = {
+        loid: data
       };
-      console.log(osef);
-      axios.get('https://nameless-meadow-8359.getsandbox.com/test', osef)
+      axios.get('https://lilosearch.herokuapp.com/getFormation', toSend)
+      // axios.get('localhost:9000/getFormation', toSend)
         .then(function(response) {
           // handle success
           console.log(response);
           var length = response.data.persons;
           var tr = '';
+          var contentText = '';
+          contentText += '<div class="row"><h4 class="mx-auto">Achieving Strategic Agility</h4></div>';
+          contentText += '<div class="row"><p>Number of approved users : 1</p></div>';
+          contentText += '<div class="row"><p>Date : 12/12/2019</p></div>';
+          contentText += '<div class="row"><p>Location : Los Angeles Office</p></div>';
+
           for (var i = 0; i < response.data.persons.length; i++) {
             tr += '<tr>';
             tr += '<td class="id"><input type="radio" id="customRadio' + i + '" name="customRadio" class="" value="' + i + '"></div></td>'
@@ -162,10 +170,14 @@
             tr += '</tr>';
             console.log(response.data.persons[i]);
           }
+          var content = document.getElementById("content");
           var tableData = document.getElementById("tableData");
           var submitBtn = document.getElementById("submitBtn");
           tableData.hidden = false;
           submitBtn.hidden = false;
+          content.hidden = false;
+          console.log(content);
+          $('#content').html(contentText);
           $('#tableData').html(tr);
         })
         .catch(function(error) {
