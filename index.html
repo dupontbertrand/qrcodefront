@@ -151,13 +151,13 @@
         .then(function(response) {
           // handle success
           console.log(response);
-          var sessionTitle = response.responseDetails.trainingItem.Title;
+          var sessionTitle = response.data.responseDetails.trainingItem.Title;
           console.log(sessionTitle);
-          var sessionProvider = response.responseDetails.trainingItem.Provider;
+          var sessionProvider = response.data.responseDetails.trainingItem.Provider;
           console.log(sessionProvider);
-          var nbreUsersApproved = response.usersApproved.length();
+          var nbreUsersApproved = response.data.usersApproved.length();
           console.log(nbreUsersApproved);
-          var length = response.data.persons;
+          // var length = response.data.persons;
           var tr = '';
           var contentText = '';
           contentText += '<div class="row"><h4 class="mx-auto">Achieving Strategic Agility</h4></div>';
@@ -165,14 +165,14 @@
           contentText += '<div class="row"><p>Date : 12/12/2019</p></div>';
           contentText += '<div class="row"><p>Location : Los Angeles Office</p></div>';
 
-          for (var i = 0; i < response.data.persons.length; i++) {
-            tr += '<tr>';
-            tr += '<td class="id"><input type="radio" id="customRadio' + i + '" name="customRadio" class="" value="' + i + '"></div></td>'
-            tr += '<td class="firstName">' + response.data.persons[i].firstName + '</td>';
-            tr += '<td class="lastName">' + response.data.persons[i].lastName + '</td>';
-            tr += '</tr>';
-            console.log(response.data.persons[i]);
-          }
+          // for (var i = 0; i < response.data.persons.length; i++) {
+          //   tr += '<tr>';
+          //   tr += '<td class="id"><input type="radio" id="customRadio' + i + '" name="customRadio" class="" value="' + i + '"></div></td>'
+          //   tr += '<td class="firstName">' + response.data.persons[i].firstName + '</td>';
+          //   tr += '<td class="lastName">' + response.data.persons[i].lastName + '</td>';
+          //   tr += '</tr>';
+          //   console.log(response.data.persons[i]);
+          // }
           var content = document.getElementById("content");
           var tableData = document.getElementById("tableData");
           var submitBtn = document.getElementById("submitBtn");
