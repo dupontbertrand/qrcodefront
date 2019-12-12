@@ -157,12 +157,25 @@
           console.log(sessionProvider);
           var nbreUsersApproved = response.data.usersApproved.length;
           console.log(nbreUsersApproved);
+          var usersApproved = response.data.usersApproved;
+          console.log(usersApproved);
+          var startDate = response.data.sessionDetails[0].PartStartDate;
+          console.log(startDate);
+          var startHour = response.data.sessionDetails[0].PartStartTime;
+          console.log(startHour);
+          var endDate = response.data.sessionDetails[0].PartEndDate;
+          console.log(endDate);
+          var endHour = response.data.sessionDetails[0].PartEndTime;
+          console.log(endHour);
           // var length = response.data.persons;
           var tr = '';
           var contentText = '';
-          contentText += '<div class="row"><h4 class="mx-auto">Achieving Strategic Agility</h4></div>';
-          contentText += '<div class="row"><p>Number of approved users : 1</p></div>';
-          contentText += '<div class="row"><p>Date : 12/12/2019</p></div>';
+          contentText += '<div class="row"><h4 class="mx-auto">' + sessionTitle + '</h4></div>';
+          contentText += '<div class="row"><p>Number of approved users : ' + usersApproved + '</p></div>';
+          contentText += '<div class="row"><p>Start Date : ' + startDate + '</p></div>';
+          contentText += '<div class="row"><p>Start Hour : ' + starthour + '</p></div>';
+          contentText += '<div class="row"><p>End Date : ' + endDate + '</p></div>';
+          contentText += '<div class="row"><p>End Hour : ' + endhour + '</p></div>';
           contentText += '<div class="row"><p>Location : Los Angeles Office</p></div>';
 
           // for (var i = 0; i < response.data.persons.length; i++) {
