@@ -183,7 +183,7 @@
 
           for (var i = 0; i < usersApproved.length; i++) {
             tr += '<tr>';
-            tr += '<td class="id"><input type="radio" id="customRadio' + i + '" name="customRadio" class="" value="' + i + '"></div></td>'
+            tr += '<td class="id"><input type="radio" id="customRadio' + i + '" name="customRadio" class="" value="' + usersApproved[i].UserId + '"></div></td>'
             tr += '<td class="fullName">' + usersApproved[i].UserFullName + '</td>';
             tr += '</tr>';
           }
@@ -215,11 +215,9 @@
       console.log('click ok');
       var userChecked = {};
       var idSelected = $("#tableData input[type='radio']:checked").val();
-      var firstNameSelected = $("#tableData input[type='radio']:checked").parent().closest('tr').find(".firstName")[0].innerText;
-      var lastNameSelected = $("#tableData input[type='radio']:checked").parent().closest('tr').find(".lastName")[0].innerText;
+      var nameSelected = $("#tableData input[type='radio']:checked").parent().closest('tr').find(".fullName")[0].innerText;
       userChecked.id = idSelected;
-      userChecked.firstName = firstNameSelected;
-      userChecked.lastName = lastNameSelected;
+      userChecked.nameSelected = nameSelected;
       console.log(userChecked);
     })
   </script>
