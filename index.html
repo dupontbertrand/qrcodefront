@@ -67,6 +67,9 @@
     <h1>QRCODE READER</h1>
     <div id="loadingMessage" hidden="">⌛ Chargement video...</div>
     <canvas id="canvas" height="480" width="640"></canvas>
+    <div class="spinner-border" role="status" id="spinner" hidden="">
+      <span class="sr-only">Loading...</span>
+    </div>
     <div id="output">
       <div id="outputMessage">Pas de QR code .</div>
       <div hidden=""><b>Data:</b> <span id="outputData"></span></div>
@@ -85,6 +88,7 @@
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
+    var spinner = document.getElementById("spinner");
     var loadingMessage = document.getElementById("loadingMessage");
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
@@ -132,7 +136,7 @@
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
-          outputData.innerText = code.data;
+          outputData.innerText = 'QR Code détecté !';
           console.log(code.data);
           requestFormationDetails(code.data);
           return;
@@ -146,6 +150,8 @@
 
     function requestFormationDetails(data) {
       canvasElement.hidden = true;
+      outputData.hidden = true;
+      spinner.hidden = false;
       console.log('in requestFormationDetails', data);
       axios.get('https://lilosearch.herokuapp.com/getFormation/' + data)
         // axios.get('localhost:9000/getFormation', toSend)
@@ -216,4 +222,5 @@
 
 
 </body>
+
 </html>
