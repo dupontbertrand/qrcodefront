@@ -1,3 +1,4 @@
+<html>
 <meta charset="utf-8">
 <title>jsQR Demo</title>
 <script src="https://cdn.jsdelivr.net/npm/jsqr@1.2.0/dist/jsQR.min.js"></script>
@@ -152,21 +153,13 @@
           // handle success
           console.log(response);
           var sessionTitle = response.data.responseDetails.trainingItem.Title;
-          console.log(sessionTitle);
           var sessionProvider = response.data.responseDetails.trainingItem.Provider;
-          console.log(sessionProvider);
           var nbreUsersApproved = response.data.usersApproved.length;
-          console.log(nbreUsersApproved);
           var usersApproved = response.data.usersApproved;
-          console.log(usersApproved);
           var startDate = response.data.sessionDetails[0].PartStartDate;
-          console.log(startDate);
           var startHour = response.data.sessionDetails[0].PartStartTime;
-          console.log(startHour);
           var endDate = response.data.sessionDetails[0].PartEndDate;
-          console.log(endDate);
           var endHour = response.data.sessionDetails[0].PartEndTime;
-          console.log(endHour);
           var location = response.data.sessionDetails[0].PartLocation;
           location = location.substring(location.lastIndexOf('>') + 1);
           location = location.trim();
@@ -199,7 +192,6 @@
         .catch(function(e) {
           // handle error
           console.log("T'es en error fdp ?");
-
           var error = document.getElementById("error");
           $('#error').html(e)
           error.hidden = false;
@@ -224,5 +216,4 @@
 
 
 </body>
-
 </html>
