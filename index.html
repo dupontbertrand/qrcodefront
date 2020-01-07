@@ -159,6 +159,7 @@
         // axios.get('localhost:9000/getFormation', toSend)
         .then(function(response) {
           // handle success
+          spinner.hidden = true;
           console.log(response);
           var sessionTitle = response.data.responseDetails.trainingItem.Title;
           var sessionProvider = response.data.responseDetails.trainingItem.Provider;
