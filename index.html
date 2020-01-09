@@ -12,16 +12,7 @@
   body {
     font-family: 'Ropa Sans', sans-serif;
     color: #333;
-    max-width: 640px;
-    margin: 0 auto;
     position: relative;
-  }
-
-  #githubLink {
-    position: absolute;
-    right: 0;
-    top: 12px;
-    color: #2D99FF;
   }
 
   h1 {
@@ -54,6 +45,17 @@
   #noQRFound {
     text-align: center;
   }
+
+  #canvas {
+    height: 100vh;
+    width: 100vw;
+  }
+  @media (min-width: 1200px) {
+    #canvas {
+      height: 480px;
+      width: 640px;
+    }
+  }
 </style>
 <script>
   window.SBX_dlc = window.SBX_dlc || {};
@@ -63,10 +65,10 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <h1>QRCODE READER</h1>
     <div id="loadingMessage" hidden="">⌛ Chargement video...</div>
-    <canvas id="canvas" height="480" width="640"></canvas>
+    <canvas id="canvas"></canvas>
     <div class="text-center" hidden="" id="spinner">
       <div class="spinner-grow" role="status">
         <span class="sr-only">Loading...</span>
